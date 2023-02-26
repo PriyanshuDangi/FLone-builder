@@ -1,0 +1,332 @@
+body {
+    margin: 0;
+}
+
+.all {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.instructionsContainer {
+    /* position: absolute; */
+    left: 0;
+    top: 0;
+    margin: 0;
+    padding: 5px;
+    background-color: lightgray;
+    height: 100vh;
+    width: 220px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    /* flex-shrink: 1; */
+}
+
+.container {
+    /* flex: 1; */
+    /* flex-grow: 1; */
+    width: calc(100vw - 220px);
+}
+
+.instructionsContainer .instructions {
+    position: relative;
+    /* height: calc(100%); */
+}
+
+.instructionsContainer .logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.instructionsContainer .logo-container img {
+    width: 150px;
+}
+
+.instructionsContainer .button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.instructionsContainer .button button {
+    padding: 10px;
+    width: 150px;
+    text-align: center;
+    margin-top: 15px;
+    border-radius: 0;
+    border: none;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.instructionsContainer .resources {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 15px;
+}
+
+.instructionsContainer .resources .resource {
+    margin-top: 20px;
+    width: 50px;
+    height: 50px;
+    position: relative;
+    margin: 10px 5px;
+}
+
+.instructionsContainer .resources .resource img {
+    height: 100%;
+    width: 100%;
+}
+
+.instructionsContainer .resources .resource input[type='color'] {
+    height: 50px;
+    width: 50px;
+    border: none;
+    padding: 0;
+}
+
+.instructionsContainer .resources .resource.active {
+    border: 2px solid #fff;
+}
+
+.instructionsContainer .resources .resource span {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(10px, -15px);
+    padding: 4px;
+    border-radius: 99px;
+    background-color: rgb(240, 105, 105);
+}
+
+.instructionsContainer .modes {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.instructionsContainer .modes .mode {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.instructionsContainer .modes select {
+    padding: 5px 0;
+    width: 70px;
+    border: none;
+    border-radius: 0;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.instructionsContainer .inputs {
+    margin-top: 10px;
+}
+
+.instructionsContainer .inputs #input {
+    width: 100%;
+    border: none;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin-bottom: 5px;
+}
+
+.instructionsContainer .inputs input {
+    margin-top: 5px;
+    font-size: 16px;
+    padding: 5px;
+    width: 70px;
+    text-align: center;
+    border: none;
+    border-bottom: 2px solid #000;
+}
+
+.instructionsContainer .inputs input:focus {
+    outline: none;
+    border-color: rgb(255, 86, 86);
+}
+
+/* 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+
+input[type=number] {
+-moz-appearance: textfield;
+} */
+
+.instructionsContainer .disconnect {
+    position: absolute;
+    bottom: -50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.instructionsContainer .disconnect button {
+    width: 150px;
+    border: none;
+    padding: 10px;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.hide {
+    visibility: hidden !important;
+}
+
+.none {
+    display: none !important;
+}
+
+/* @media (max-width: 868px) {
+    .instructionsContainer {
+        width: 150px;
+    }
+} */
+
+.toast-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 250px;
+    max-width: 450px;
+    position: fixed;
+    right: 20px;
+    top: 30px;
+    z-index: 999;
+}
+
+.toast {
+    padding: 10px 15px;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 14px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    font-family: sans-serif;
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+    align-items: center;
+    visibility: none;
+    opacity: 0;
+}
+
+#toast-close {
+    height: 22px;
+    width: 22px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.toast--active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.toast--success {
+    background-color: rgb(25 155 25);
+}
+
+.toast--error {
+    background-color: rgb(234 32 32);
+}
+
+.toast--warning {
+    background-color: rgb(255 109 22);
+    color: #000;
+}
+
+.tabMode {
+    margin: 15px auto;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.tabMode button {
+    width: 50%;
+    border: none;
+    background-color: #fff;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-bottom: 2px solid rgb(36, 36, 161);
+}
+
+.imageMode {
+    width: 100%;
+    display: block;
+    overflow: hidden;
+    position: relative;
+    padding: 0 10px;
+}
+.imageMode .image-form div {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+.imageMode button {
+    padding: 10px;
+    width: 200px;
+    margin-bottom: 10px;
+    display: inline-block;
+    padding: 10px;
+    text-align: center;
+    color: #fff;
+    background-color: rgb(36, 36, 161);
+    border: 2px solid rgb(36, 36, 161);
+    cursor: pointer;
+    transition: all 0.5s;
+}
+.imageMode button:hover {
+    background-color: #ffffff;
+    color: rgb(36, 36, 161);
+    transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+}
+.imageMode input[type='file'] {
+    display: none;
+}
+
+.imageMode label,
+.imageMode span {
+    width: 100%;
+    text-align: left;
+}
+input[type='url'] {
+    width: 178px;
+    padding: 5px 10px;
+    background-color: #fff;
+    border: 2px solid rgb(36, 36, 161);
+}
+input[type='url']:focus {
+    outline: none;
+}
+.instructions .tabMode .mode--active {
+    background-color: rgb(36, 36, 161);
+    color: #fff;
+}
+
+.cubeContainer #disconnect-home-btn {
+    padding: 10px 30px;
+    margin: 10px;
+    background: transparent;
+    color: inherit;
+    border: 3px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to left, #743ad5, #d53a9d);
+    cursor: pointer;
+}

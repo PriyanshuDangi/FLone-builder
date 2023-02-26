@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
+
+<head>
+	<meta charset="utf-8" />
+	<link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="theme-color" content="#000000" />
+	<meta name="description"
+		content="Flone" />
+	<meta name="”robots”" content="”index,follow”" />
+	<link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+	<!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
+	<link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css"
+		integrity="sha512-BnbUDfEUfV0Slx6TunuB042k9tuKe3xrD6q4mg5Ed72LTgzDIcLPxg6yI2gcMFRyomt+yJJxE+zJwNmxki6/RA=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+	<!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
       Only files inside the `public` folder can be referenced from the HTML.
@@ -24,12 +27,114 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
+	<title>Flone Builder</title>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-F0T4GVV3J0"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'G-F0T4GVV3J0');
+	</script> -->
+	<link href="./style.css" rel="stylesheet" />
+</head>
+
+<body>
+	<noscript>You need to enable JavaScript to run this app.</noscript>
+	<div class="toast-container" id="toast-container"></div>
+	<div class="cubeContainer" id="cubeLoader">
+		<div class="cube" id="cubeDiv">
+			<div class="side"></div>
+			<div class="side"></div>
+			<div class="side"></div>
+			<div class="side"></div>
+			<div class="side"></div>
+			<div class="side"></div>
+		</div>
+		<div style="text-align: center;">	
+			<div id="messageDiv"></div>
+			<button id="disconnect-home-btn" class="none">DISCONNECT WALLET</button>
+		</div>
+	</div>
+	<div class="all hide" id="all">
+		<div class="container" id="container"></div>
+		<div class="instructionsContainer">
+			<div class="logo-container">
+				Flone
+			</div>
+			<div class="instructions">
+				<div class="button">
+					<button id="publish">Publish</button>
+				</div>
+				<div class="button">
+					<button id="reset-camera">Reset Camera</button>
+				</div>
+				<div class="button">
+					<button id="clear-all">Clear All</button>
+				</div>
+				<div class="tabMode">
+					<button id="cubeMode" class="tablinks mode--active">Cube</button>
+					<button id="imageMode" class="tablinks">Image</button>
+				</div>
+				<div class="imageMode none" id="imageMode-div">
+					<div class="image-form">
+						<div style="display: flex; flex-direction: row; gap: 20px; margin-bottom: 10px;">
+							Left:
+							<span id="imageCount">3</span>
+						</div>
+						<div>
+							<input type="file" accept="image/*" id="imageInput" />
+							<span id='imageVal'>No file chosen</span>
+							<button id='imageButton'>Select File</button>
+						</div>
+						<div>
+							<label for="urlInput">Link</label>
+							<input type="url" id="urlInput" value="https://objkt.com/"
+								placeholder="https://objkt.com/" />
+						</div>
+					</div>
+				</div>
+				<div class="cubeMode" id="cubeMode-div">
+					<div class="modes">
+						<label for="select">Select Mode</label>
+						<select id="inputType">
+							<option default value="click">Click</option>
+							<option value="drag">Drag</option>
+						</select>
+					</div>
+					<div class="resources" id="resources"></div>
+				</div>
+				<div class="inputs" id="inputs">
+					<div id="input">
+						<label for="inputX">X</label>
+						<input class="rectInput" id="inputX" type="number" min="1" max="32" step="1" value="1"
+							placeholder="x" />
+					</div>
+					<div id="input">
+						<label for="inputY">Y</label>
+						<input class="rectInput" id="inputY" type="number" min="1" max="16" step="1" value="1"
+							placeholder="y" />
+					</div>
+					<div id="input">
+						<label for="inputZ">Z</label>
+						<input class="rectInput" id="inputZ" type="number" min="1" max="32" step="1" value="1"
+							placeholder="z" />
+					</div>
+				</div>
+				<div class="modes">
+					<label for="delete">Delete Mode</label>
+					<input type="checkbox" id="deleteInput">
+					</input>
+				</div>
+				<div class="none disconnect"><button id="disconnect">Disconnect</button></div>
+				<!-- <div class="controls" id="controls"></div> -->
+			</div>
+		</div>
+	</div>
+	<div id="root"></div>
+	<!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
 
@@ -39,5 +144,6 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-  </body>
+</body>
+
 </html>
