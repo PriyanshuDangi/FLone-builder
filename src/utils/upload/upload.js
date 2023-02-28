@@ -18,3 +18,20 @@ export const uploadCube = async (cubes, cubeId) => {
     const ipfsUrl = 'ipfs://' + response.data.IpfsHash;
     return ipfsUrl;
 };
+
+// export const uploadCube = async (cubes, cubeId) => {
+//     const JSONBody = {
+//         cubeId: cubeId,
+//         cubes: cubes,
+//         version: 0,
+//         cubeSize: 2,
+//     };
+
+//     const response = await axios.post("http://localhost:8181/ipfs/upload",
+//         {
+//             json: JSONBody,
+//             token_id: cubeId,
+//         }
+//     );
+//     console.log(response);
+// }
