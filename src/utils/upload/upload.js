@@ -1,9 +1,10 @@
 import axios from 'axios';
 
-export const uploadCube = async (cubes, cubeId) => {
+export const uploadCube = async (cubes, images, cubeId) => {
     const JSONBody = {
         cubeId: cubeId,
         cubes: cubes,
+        images: images,
         version: 0,
         cubeSize: 2,
     };
@@ -23,6 +24,7 @@ export const uploadCube = async (cubes, cubeId) => {
 //     const JSONBody = {
 //         cubeId: cubeId,
 //         cubes: cubes,
+//         images: images,
 //         version: 0,
 //         cubeSize: 2,
 //     };

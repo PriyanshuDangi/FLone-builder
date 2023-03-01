@@ -635,7 +635,7 @@ class Builder {
         // const ipfsUrl = 'ipfs://' + response.data.hash;
         // return ipfsUrl;
 
-        return uploadCube(cubes, this.token_id);
+        return uploadCube(cubes, images, this.token_id);
     }
 
     async publish() {

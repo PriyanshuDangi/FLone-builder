@@ -35,11 +35,8 @@ class state {
         this.previousImages = [];
 
         try {
-            // this.setTokenId();
-            // await this.connect();
-            // await this.checkOwner();
-            // await this.fetchLandDetails();
-            // await this.fetchPreviousData();
+            this.setTokenId();
+            await this.fetchPreviousData();
             cubeLoader.classList.add('none');
             allContainer.classList.remove('hide');
             this.builder = new Builder(this.token_id, this.maxCount, this.previousCubes, this.previousImages);
@@ -77,17 +74,19 @@ class state {
         }
         console.log(this.token_id);
     }
-
-    async connect() {}
-
     async disconnect() {}
-
-    async checkOwner() {}
-
-    async fetchLandDetails() {}
 
     async fetchPreviousData() {
         try {
+            let hash = this.hash;
+            if (!hash) {
+                return;
+            }
+            let url = PINATA_GATEWAY_URL + hash;
+            const res = await axios.get(url);
+            this.previousCubes = res.data.cubes;
+
+            this.previousImages = res.data.images ? res.data.images : [];
         } catch (err) {
             console.log(err);
         }
